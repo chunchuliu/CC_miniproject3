@@ -1,13 +1,13 @@
 # CC_miniproject3
 ## part 1
 We edit the cassandra.yaml on each node. The screenshot below is an example of master's configuration.
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.38.10.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.38.10.png)
 ![](https://github.com/chunchuliu/CC_miniproject3/raw/master/image.png)
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.39.44.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.39.44.png)
 We start the services on all the nodes, this is the status of our nodes. All three nodes are up.
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.41.02.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.41.02.png)
 This is the result of test CQL using Cassandra.
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.43.11.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.43.11.png)
 
 ## part 2
 ```
@@ -15,7 +15,7 @@ CREATE KEYSPACE project3 WITH replication={'class':'SimpleStrategy', 'replicatio
 CREATE TABLE project3.part2(ip text, c1 text, c2 text, c3 text, c4 text, c5 text, c6 text, c7 text, primary key(ip, c1, c2, c3));
 COPY project3.part2 FROM 'access_log' with delimiter=' ' and HEADER = TRUE;
 ```
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.43.48.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.43.48.png)
 
 ```
 cd spark
@@ -38,7 +38,7 @@ mv urldata.csv access.csv
 CREATE TABLE project3.part3(ip text, time text, url text, primary key(ip, time));
 COPY project3.part3 FROM 'access.csv' with HEADER = TRUE;
 ```
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.44.01.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.44.01.png)
 
 ## part 3
 ### part 3-1
@@ -46,12 +46,12 @@ COPY project3.part3 FROM 'access.csv' with HEADER = TRUE;
 select count(*) from project3.part3 where url='/assets/img/release-schedule-logo.png' allow filtering;
 ```
 
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.44.09.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.44.09.png)
 ### part3-2
 ```
 select count() from project3.part2 where ip='10.207.188.188';
 ```
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.44.17.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2016.44.17.png)
 
 ### part3-3
 ```
@@ -121,12 +121,12 @@ INITCOND {};
 ```
 select max_value_group_and_count(url) from part3;
 ```
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.05.01.png)
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.06.00.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.05.01.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.06.00.png)
 ### part3-4
 ```
 select max_group_and_count(ip) from part3;
 select max_value_group_and_count(ip) from part3;
 ```
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.06.09.png)
-![](https://github.com/chunchuliu/CC_miniproject3/blob/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.06.16.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.06.09.png)
+![](https://github.com/chunchuliu/CC_miniproject3/raw/master/%E6%88%AA%E5%B1%8F2020-04-15%2017.06.16.png)
